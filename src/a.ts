@@ -1,4 +1,4 @@
-export let nameA = "I'm A!"
+export let nameA: string = "I'm A!"
 
 
 nameA = 'export导出A'

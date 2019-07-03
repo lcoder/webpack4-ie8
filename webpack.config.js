@@ -5,7 +5,7 @@ const ie8 = require( "./webpack-ie8-plugin/index" )
 
 module.exports = {
     mode: "development" ,
-    entry: "./src/index.js" ,
+    entry: "./src/index" ,
     devtool: "source-map" ,
     output: {
         path: path.resolve( __dirname , "dist" ) ,
@@ -16,6 +16,9 @@ module.exports = {
         compress: true ,
         port: 9000 ,
         host: '0.0.0.0' ,
+    } ,
+    resolve: {
+        extensions: [".ts" , ".js"]
     } ,
     module: {
         rules: [
@@ -34,7 +37,12 @@ module.exports = {
                         ]
                     }
                 }
-            }
+            } ,
+            {
+                test: /\.ts$/ ,
+                loader: 'ts-loader' ,
+                exclude: /node_modules/
+            } ,
         ] ,
     } ,
     plugins: [ 
